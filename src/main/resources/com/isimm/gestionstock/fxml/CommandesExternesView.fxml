@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!-- Changed from BorderPane to AnchorPane for compatibility with MainView -->
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.isimm.gestionstock.controller.CommandesExternesController">
+    <!-- Converted top section to anchored VBox -->
+    <VBox spacing="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="220.0" AnchorPane.topAnchor="0.0">
+        <children>
+            <Label styleClass="title" text="Gestion des Commandes Externes" />
+            <TextField fx:id="searchField" promptText="Rechercher une commande..." />
+        </children>
+        <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+        </padding>
+    </VBox>
+
+    <!-- Converted center section to anchored TableView -->
+    <TableView fx:id="commandesTable" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="220.0" AnchorPane.topAnchor="80.0">
+        <columns>
+            <TableColumn fx:id="idColumn" prefWidth="50.0" text="ID" />
+            <TableColumn fx:id="numeroColumn" prefWidth="120.0" text="N° Commande" />
+            <TableColumn fx:id="fournisseurColumn" prefWidth="100.0" text="Fournisseur" />
+            <TableColumn fx:id="dateColumn" prefWidth="150.0" text="Date" />
+            <TableColumn fx:id="statutColumn" prefWidth="100.0" text="Statut" />
+            <TableColumn fx:id="montantColumn" prefWidth="100.0" text="Montant" />
+        </columns>
+    </TableView>
+
+    <!-- Converted right section to anchored VBox -->
+    <VBox spacing="10.0" styleClass="form-panel" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" prefWidth="210.0">
+        <children>
+            <Label styleClass="form-title" text="Détails de la Commande" />
+            <Label text="N° Commande:" />
+            <TextField fx:id="numeroField" />
+            <Label text="Fournisseur:" />
+            <ComboBox fx:id="fournisseurCombo" prefWidth="200.0" />
+            <Label text="Statut:" />
+            <ComboBox fx:id="statutCombo" prefWidth="200.0" />
+            <Label text="Montant Total:" />
+            <TextField fx:id="montantField" />
+            <Label text="Observations:" />
+            <TextArea fx:id="observationsField" prefRowCount="3" />
+            <HBox spacing="5.0">
+                <children>
+                    <Button fx:id="addButton" onAction="#handleAdd" styleClass="btn-primary" text="Ajouter" />
+                    <Button fx:id="updateButton" disable="true" onAction="#handleUpdate" styleClass="btn-secondary" text="Modifier" />
+                </children>
+            </HBox>
+            <HBox spacing="5.0">
+                <children>
+                    <Button fx:id="deleteButton" disable="true" onAction="#handleDelete" styleClass="btn-danger" text="Supprimer" />
+                    <Button fx:id="validerButton" disable="true" onAction="#handleValider" styleClass="btn-success" text="Valider" />
+                </children>
+            </HBox>
+            <Button fx:id="clearButton" onAction="#handleClear" text="Effacer" />
+        </children>
+        <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+        </padding>
+    </VBox>
+</AnchorPane>

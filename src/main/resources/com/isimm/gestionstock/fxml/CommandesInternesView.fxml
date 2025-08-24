@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.isimm.gestionstock.controller.CommandesInternesController">
+    <children>
+        <!-- Titre -->
+        <Label layoutX="20.0" layoutY="20.0" styleClass="title-label" text="Gestion des Commandes Internes" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
+
+        <!-- Zone de recherche -->
+        <HBox layoutX="20.0" layoutY="60.0" spacing="10.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="60.0">
+            <children>
+                <Label text="Rechercher:" />
+                <TextField fx:id="txtRecherche" prefWidth="300.0" promptText="Rechercher par numéro, service, article..." />
+            </children>
+        </HBox>
+
+        <!-- Tableau des commandes internes -->
+        <TableView fx:id="tableCommandesInternes" layoutX="20.0" layoutY="100.0" prefHeight="300.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="350.0" AnchorPane.topAnchor="100.0">
+            <columns>
+                <TableColumn fx:id="colId" prefWidth="50.0" text="ID" />
+                <TableColumn fx:id="colNumeroCommande" prefWidth="120.0" text="N° Commande" />
+                <TableColumn fx:id="colDateCommande" prefWidth="100.0" text="Date" />
+                <TableColumn fx:id="colServiceDemandeur" prefWidth="120.0" text="Service" />
+                <TableColumn fx:id="colArticle" prefWidth="150.0" text="Article" />
+                <TableColumn fx:id="colQuantiteDemandee" prefWidth="80.0" text="Quantité" />
+                <TableColumn fx:id="colStatut" prefWidth="100.0" text="Statut" />
+                <TableColumn fx:id="colMontantTotal" prefWidth="100.0" text="Montant" />
+            </columns>
+        </TableView>
+
+        <!-- Formulaire de saisie -->
+        <VBox layoutX="20.0" layoutY="420.0" spacing="10.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="350.0" AnchorPane.topAnchor="420.0">
+            <children>
+                <Label styleClass="section-label" text="Détails de la commande interne" />
+
+                <GridPane hgap="10.0" vgap="10.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="120.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="120.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Label text="N° Commande:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                        <TextField fx:id="txtNumeroCommande" promptText="CMD-XXXX" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                        <Label text="Date:" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                        <DatePicker fx:id="dateCommande" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+
+                        <Label text="Service demandeur:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                        <ComboBox fx:id="cmbServiceDemandeur" prefWidth="200.0" promptText="Sélectionner un service" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                        <Label text="Article:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <ComboBox fx:id="cmbArticle" prefWidth="200.0" promptText="Sélectionner un article" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+
+                        <Label text="Quantité:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                        <TextField fx:id="txtQuantiteDemandee" promptText="0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                        <Label text="Statut:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <ComboBox fx:id="cmbStatut" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+
+                        <Label text="Montant total:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                        <TextField fx:id="txtMontantTotal" editable="false" promptText="0.00" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                    </children>
+                </GridPane>
+
+                <Label text="Observations:" />
+                <TextArea fx:id="txtObservations" prefHeight="60.0" promptText="Observations sur la commande..." />
+            </children>
+        </VBox>
+
+        <!-- Boutons d'action -->
+        <VBox layoutX="20.0" layoutY="100.0" spacing="10.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="100.0">
+            <children>
+                <Label styleClass="section-label" text="Actions" />
+                <Button fx:id="btnAjouter" onAction="#ajouterCommandeInterne" prefWidth="120.0" styleClass="primary-button" text="Ajouter" />
+                <Button fx:id="btnModifier" onAction="#modifierCommandeInterne" prefWidth="120.0" styleClass="secondary-button" text="Modifier" />
+                <Button fx:id="btnSupprimer" onAction="#supprimerCommandeInterne" prefWidth="120.0" styleClass="danger-button" text="Supprimer" />
+                <Separator />
+                <Button fx:id="btnValider" onAction="#validerCommande" prefWidth="120.0" styleClass="success-button" text="Valider" />
+                <Button fx:id="btnAnnuler" onAction="#annulerSaisie" prefWidth="120.0" styleClass="secondary-button" text="Annuler" />
+            </children>
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+        </VBox>
+    </children>
+</AnchorPane>

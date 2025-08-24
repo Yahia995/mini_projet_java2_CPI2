@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.isimm.gestionstock.controller.StatistiquesController">
+    <children>
+        <VBox spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <!-- En-tête -->
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <children>
+                        <Label styleClass="page-title" text="Statistiques et Rapports" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <ComboBox fx:id="comboPeriode" onAction="#handleFiltrerPeriode" />
+                        <DatePicker fx:id="dateDebut" />
+                        <Label text="au" />
+                        <DatePicker fx:id="dateFin" />
+                        <Button onAction="#handleActualiser" styleClass="btn-primary" text="Actualiser" />
+                        <Button onAction="#handleExporterRapport" styleClass="btn-success" text="Exporter" />
+                    </children>
+                </HBox>
+
+                <!-- Indicateurs généraux -->
+                <TitledPane collapsible="false" text="Indicateurs Généraux">
+                    <content>
+                        <HBox alignment="CENTER" spacing="50.0">
+                            <children>
+                                <VBox alignment="CENTER" spacing="5.0">
+                                    <children>
+                                        <Label styleClass="stat-value" fx:id="lblTotalArticles" text="0" />
+                                        <Label styleClass="stat-label" text="Total Articles" />
+                                    </children>
+                                </VBox>
+                                <VBox alignment="CENTER" spacing="5.0">
+                                    <children>
+                                        <Label styleClass="stat-value" fx:id="lblTotalCommandes" text="0" />
+                                        <Label styleClass="stat-label" text="Total Commandes" />
+                                    </children>
+                                </VBox>
+                                <VBox alignment="CENTER" spacing="5.0">
+                                    <children>
+                                        <Label styleClass="stat-value" fx:id="lblValeurStock" text="0.00 DT" />
+                                        <Label styleClass="stat-label" text="Valeur du Stock" />
+                                    </children>
+                                </VBox>
+                            </children>
+                        </HBox>
+                    </content>
+                </TitledPane>
+
+                <!-- Graphiques -->
+                <HBox spacing="10.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <!-- Graphique en secteurs -->
+                        <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label styleClass="section-title" text="Répartition par Catégorie" />
+                                <PieChart fx:id="pieChartCategories" prefHeight="300.0" />
+                            </children>
+                        </VBox>
+
+                        <!-- Graphique en barres -->
+                        <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label styleClass="section-title" text="Consommation par Service" />
+                                <BarChart fx:id="barChartConsommation" prefHeight="300.0">
+                                    <xAxis>
+                                        <CategoryAxis fx:id="xAxisBar" />
+                                    </xAxis>
+                                    <yAxis>
+                                        <NumberAxis fx:id="yAxisBar" />
+                                    </yAxis>
+                                </BarChart>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+
+                <!-- Graphique linéaire -->
+                <VBox spacing="5.0">
+                    <children>
+                        <Label styleClass="section-title" text="Évolution du Stock" />
+                        <LineChart fx:id="lineChartEvolution" prefHeight="200.0">
+                            <xAxis>
+                                <CategoryAxis fx:id="xAxisLine" />
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis fx:id="yAxisLine" />
+                            </yAxis>
+                        </LineChart>
+                    </children>
+                </VBox>
+
+                <!-- Tableaux des tops -->
+                <HBox spacing="10.0">
+                    <children>
+                        <!-- Top articles -->
+                        <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label styleClass="section-title" text="Articles les Plus Consommés" />
+                                <TableView fx:id="tableTopArticles" prefHeight="200.0">
+                                    <columns>
+                                        <TableColumn fx:id="colTopArticleNom" prefWidth="200.0" text="Article" />
+                                        <TableColumn fx:id="colQuantiteConsommee" prefWidth="120.0" text="Quantité" />
+                                    </columns>
+                                </TableView>
+                            </children>
+                        </VBox>
+
+                        <!-- Top services -->
+                        <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label styleClass="section-title" text="Services les Plus Actifs" />
+                                <TableView fx:id="tableTopServices" prefHeight="200.0">
+                                    <columns>
+                                        <TableColumn fx:id="colServiceNom" prefWidth="200.0" text="Service" />
+                                        <TableColumn fx:id="colNbCommandes" prefWidth="120.0" text="Nb Commandes" />
+                                    </columns>
+                                </TableView>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+            </children>
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+        </VBox>
+    </children>
+</AnchorPane>

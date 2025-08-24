@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="mainBorderPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.isimm.gestionstock.controller.MainController">
+    <top>
+        <VBox>
+            <MenuBar fx:id="menuBar">
+                <Menu text="Fichier">
+                    <MenuItem onAction="#handleExit" text="Quitter" />
+                </Menu>
+                <Menu text="Gestion">
+                    <MenuItem onAction="#showArticles" text="Articles" />
+                    <MenuItem onAction="#showLocaux" text="Locaux" />
+                    <MenuItem onAction="#showFournisseurs" text="Fournisseurs" />
+                    <MenuItem onAction="#showServices" text="Services" />
+                    <SeparatorMenuItem />
+                    <MenuItem onAction="#showCommandesExternes" text="Commandes Externes" />
+                    <MenuItem onAction="#showCommandesInternes" text="Commandes Internes" />
+                    <SeparatorMenuItem />
+                    <MenuItem onAction="#showInventaire" text="Inventaire" />
+                </Menu>
+                <Menu text="Outils">
+                    <MenuItem onAction="#showStatistiques" text="Statistiques" />
+                    <MenuItem onAction="#showAlertes" text="Alertes Stock" />
+                </Menu>
+                <Menu text="Aide">
+                    <MenuItem onAction="#handleAbout" text="À propos" />
+                </Menu>
+            </MenuBar>
+            <ToolBar>
+                <Button onAction="#showDashboard" text="Tableau de bord" />
+<!--                <Separator />-->
+<!--                <Button onAction="#showArticles" text="Articles" />-->
+<!--                <Button onAction="#showLocaux" text="Locaux" />-->
+<!--                <Button onAction="#showFournisseurs" text="Fournisseurs" />-->
+<!--                <Button onAction="#showServices" text="Services" />-->
+<!--                <Separator />-->
+<!--                <Button onAction="#showCommandesExternes" text="Cmd Externes" />-->
+<!--                <Button onAction="#showCommandesInternes" text="Cmd Internes" />-->
+<!--                <Separator />-->
+<!--                <Button onAction="#showAlertes" text="Alertes" />-->
+            </ToolBar>
+        </VBox>
+    </top>
+
+    <center>
+        <AnchorPane fx:id="contentArea" />
+    </center>
+    <bottom>
+        <Label fx:id="statusLabel" text="Prêt" />
+    </bottom>
+</BorderPane>
