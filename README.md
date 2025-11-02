@@ -84,7 +84,7 @@ Cette application de gestion de stock a été conçue pour répondre aux besoins
 
 ### 1. Cloner le Projet
 \`\`\`bash
-git clone https://github.com/votre-username/gestion-stock-isimm.git
+git clone https://github.com/Yahia995/gestion-stock-isimm.git
 cd gestion-stock-isimm
 \`\`\`
 
