@@ -151,19 +151,34 @@ src/
 │   │   │   ├── ArticleDAO.java
 
 │   │   │   ├── LocalDAO.java
+
 │   │   │   └── ...
+
 │   │   └── util/
+
 │   │       └── DatabaseConnection.java  # Connexion DB
+
 │   │── resources/
+
 │   │   ├── fxml/                        # Interfaces utilisateur
+
 │   │   │    │   ├── MainView.fxml
+
+
 │   │   │    │   ├── ArticlesView.fxml
+
 │   │   │    │   └── ...
+
 │   │   │    └── css/
+
 │   │   │        └── application.css          # Styles CSS
+
 │   └── scripts/
+
 │       ├── create_database.sql              # Création DB
+
 │       └── insert_sample_data.sql           # Données d'exemple
+
 └── pom.xml                              # Configuration Maven
 \`\`\`
 
